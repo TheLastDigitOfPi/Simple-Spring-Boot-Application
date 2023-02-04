@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gcu</groupId>
-	<artifactId>Activity6-2</artifactId>
+	<artifactId>SpingBootTestApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpingBootTestApp</name>
 	<description>Demo project for Spring Boot</description>

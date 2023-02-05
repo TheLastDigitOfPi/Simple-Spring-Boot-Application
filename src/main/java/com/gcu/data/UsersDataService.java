@@ -1,12 +1,10 @@
 package com.gcu.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
 import com.gcu.data.entity.OrderEntity;
@@ -15,17 +13,29 @@ import com.gcu.data.repository.mongo.UsersMongoRepository;
 @Service
 public class UsersDataService implements UserDataAccessInterface<UserEntity> {
 
-	@Autowired
-	private UsersMongoRepository usersRepository;
+	//@Autowired
+	//private UsersMongoRepository usersRepository;
 
-	private JdbcTemplate jdbcTemplateObject;
+	//private JdbcTemplate jdbcTemplateObject;
 	
-	@Autowired
-	DataSource dataSource;
+	//@Autowired
+	//DataSource dataSource;
 	
 	@Override
 	public UserEntity findByUsername(String username) {
-		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
+		//this.jdbcTemplateObject = new JdbcTemplate(dataSource);
+		
+		List<UserEntity> usersList = new ArrayList<UserEntity>();
+		usersList.add(new UserEntity("1", "Daniel", "$2a$10$LzO.G0Fd2MwR9tA4zwQnDOrbhQvHm5p.ncuFDvCpxl7SZ/WK9.BLS"));
+		usersList.add(new UserEntity("2", "Test", "$2a$10$.yEgZxAVU9sUxAq7JJVOnewu9ZgQG5e2E1FCcm3OE6CeHR9bRBECO"));
+		
+		for(UserEntity user : usersList)
+		{
+			if(user.getUsername().equals(username))
+				return user;
+		}
+		return null;
+		/*
 		String sql = "SELECT * FROM USERS WHERE username = '" + username + "'";
 		try
 		{
@@ -44,7 +54,7 @@ public class UsersDataService implements UserDataAccessInterface<UserEntity> {
 			e.printStackTrace();
 		}
 		return null;
-		
+		*/
 	}
 
 }
